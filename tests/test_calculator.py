@@ -1,4 +1,4 @@
-import calculator
+from src import calculator
 
 def test_sum():
   assert calculator.sum(1, 2) == 3
