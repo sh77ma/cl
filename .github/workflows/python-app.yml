@@ -1,4 +1,4 @@
-name: Calculator Tests and Deployment
+name: Calculator Tests
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test-and-deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -19,4 +19,4 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest discover -v
+          python -m unittest test_calculator
