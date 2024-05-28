@@ -1,0 +1,81 @@
+name: Calculator-test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Test addition
+        run: |
+          python main.py
+          ui.button_2.clicked.emit()
+          ui.button_add.clicked.emit()
+          ui.button_3.clicked.emit()
+          ui.button_equal.clicked.emit()
+          if ui.label.text() != "5.0":
+            echo "Addition test failed"
+            exit 1
+
+      - name: Test subtraction
+        run: |
+          python main.py
+          ui.button_5.clicked.emit()
+          ui.button_sub.clicked.emit()
+          ui.button_2.clicked.emit()
+          ui.button_equal.clicked.emit()
+          if ui.label.text() != "3.0":
+            echo "Subtraction test failed"
+            exit 1
+
+      - name: Test multiplication
+        run: |
+          python main.py
+          ui.button_2.clicked.emit()
+          ui.button_multi.clicked.emit()
+          ui.button_3.clicked.emit()
+          ui.button_equal.clicked.emit()
+          if ui.label.text() != "6.0":
+            echo "Multiplication test failed"
+            exit 1
+
+      - name: Test division
+        run: |
+          python main.py
+          ui.button_6.clicked.emit()
+          ui.button_div.clicked.emit()
+          ui.button_2.clicked.emit()
+          ui.button_equal.clicked.emit()
+          if ui.label.text() != "3.0":
+            echo "Division test failed"
+            exit 1
+
+      - name: Test percentage
+        run: |
+          python main.py
+          ui.button_5.clicked.emit()
+          ui.button_per.clicked.emit()
+          if ui.label.text() != "0.05":
+            echo "Percentage test failed"
+            exit 1
+
+      - name: Test negative
+        run: |
+          python main.py
+          ui.button_5.clicked.emit()
+          ui.button_neg.clicked.emit()
+          if ui.label.text() != "-5.0":
+            echo "Negative test failed"
+            exit 1
+
+      - name: Test comma
+        run: |
+          python main.py
+          ui.button_5.clicked.emit()
+          ui.button_comma.clicked.emit()
+          ui.button_2.clicked.emit()
+          if ui.label.text() != "5.2":
+            echo "Comma test failed"
+            exit 1
